@@ -22,11 +22,11 @@ phases:
     - echo generating app key
     - php artisan key:generate
     - echo Building the Docker image...
-    - docker build -t $REPOSITORY_URI:latest .
-    - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+    - docker build -t bymega/laravel-docker-aws .
+    - docker tag bymega/laravel-docker-aws:latest 263135548359.dkr.ecr.us-east-2.amazonaws.com/bymega/laravel-docker-aws:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker image ls -a
-      - docker push $REPOSITORY_URI:$IMAGE_TAG 
+      - docker push 263135548359.dkr.ecr.us-east-2.amazonaws.com/bymega/laravel-docker-aws:latest
